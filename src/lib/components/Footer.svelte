@@ -1,15 +1,16 @@
 <script lang="ts">
-    const nav_links = [
-        { href: "/services", label: "Services" },
-        { href: "/work", label: "Our Work" },
-        { href: "/about", label: "About" },
-        { href: "/contact", label: "Contact" },
-    ];
+const nav_links = [
+    { href: "/services", label: "Services" },
+    { href: "/work", label: "Our Work" },
+    { href: "/about", label: "About" },
+    { href: "/careers", label: "Careers" },
+    { href: "/contact", label: "Contact" },
+];
 
-    const current_year = new Date().getFullYear();
+const current_year = new Date().getFullYear();
 </script>
 
-<footer class="bg-page border-t border-white/8">
+<footer class="bg-page border-t border-border">
     <div class="max-w-[1200px] mx-auto px-5 py-12 lg:py-16">
         <div class="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-16">
             <!-- Brand column -->
@@ -41,7 +42,7 @@
 
             <!-- Services links -->
             <div>
-                <p class="text-xs font-500 uppercase tracking-widest text-body/60 mb-4">Services</p>
+                <p class="text-xs font-500 uppercase tracking-widest text-caption mb-4">Services</p>
                 <ul class="flex flex-col gap-3">
                     <li><a href="/services#software" class="text-sm text-body hover:text-heading transition-colors duration-150">Custom Software</a></li>
                     <li><a href="/services#ai" class="text-sm text-body hover:text-heading transition-colors duration-150">AI Consulting</a></li>
@@ -52,7 +53,7 @@
 
             <!-- Company links -->
             <div>
-                <p class="text-xs font-500 uppercase tracking-widest text-body/60 mb-4">Company</p>
+                <p class="text-xs font-500 uppercase tracking-widest text-caption mb-4">Company</p>
                 <ul class="flex flex-col gap-3">
                     {#each nav_links as link}
                         <li>
@@ -69,11 +70,11 @@
         </div>
 
         <!-- Dashed separator + bottom bar -->
-        <div class="mt-12 pt-6 border-t border-dashed border-white/[0.06] flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-center">
-            <p class="text-xs text-body/50">
+        <div class="mt-12 pt-6 border-t border-dashed border-border flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-center">
+            <p class="text-xs text-caption">
                 &copy; {current_year} Elevate Company Limited. All rights reserved.
             </p>
-            <p class="text-xs text-body/50">elevateco.dev</p>
+            <p class="text-xs text-caption">elevateco.dev</p>
         </div>
     </div>
 </footer>

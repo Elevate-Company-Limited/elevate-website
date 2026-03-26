@@ -1,50 +1,50 @@
 <script lang="ts">
-    import { fade_up } from '$lib/actions/animate';
+import { fade_up } from "$lib/actions/animate";
 
-    type CaseStudy = {
-        industry: string;
-        industry_color: string;
-        services: string[];
-        title: string;
-        description: string;
-        outcome: string;
-    };
+type CaseStudy = {
+    industry: string;
+    industry_color: string;
+    services: string[];
+    title: string;
+    description: string;
+    outcome: string;
+};
 
-    const case_studies: CaseStudy[] = [
-        {
-            industry: "Logistics",
-            industry_color: "orange",
-            services: ["Custom Software", "Data Engineering"],
-            title: "Fleet Operations Visibility Platform",
-            description:
-                "Built a real-time fleet tracking and reporting platform for a logistics operator " +
-                "managing hundreds of vehicles across Tanzania. Replaced a fragmented mix of " +
-                "spreadsheets and manual check-ins with a single source of truth.",
-            outcome: "40% reduction in manual reporting hours",
-        },
-        {
-            industry: "FinTech",
-            industry_color: "emerald",
-            services: ["Custom Software", "Business Intelligence"],
-            title: "Digital Payments Reconciliation System",
-            description:
-                "Designed and built an automated reconciliation engine that matches transactions " +
-                "across multiple payment channels, flagging discrepancies in real time. Replaced " +
-                "a daily manual process that took hours and was prone to error.",
-            outcome: "Processing 10,000+ transactions per day",
-        },
-        {
-            industry: "Healthcare",
-            industry_color: "sky",
-            services: ["Custom Software", "Data Engineering"],
-            title: "Patient Data Management System",
-            description:
-                "Developed a secure patient records system for a network of regional clinics, " +
-                "replacing paper-based processes with a unified digital platform. Designed for " +
-                "low-bandwidth environments and offline-first operation.",
-            outcome: "Serving 5 regional clinics",
-        },
-    ];
+const case_studies: CaseStudy[] = [
+    {
+        industry: "Logistics",
+        industry_color: "orange",
+        services: ["Custom Software", "Data Engineering"],
+        title: "Fleet Operations Visibility Platform",
+        description:
+            "Built a real-time fleet tracking and reporting platform for a logistics operator " +
+            "managing hundreds of vehicles across Tanzania. Replaced a fragmented mix of " +
+            "spreadsheets and manual check-ins with a single source of truth.",
+        outcome: "40% reduction in manual reporting hours",
+    },
+    {
+        industry: "FinTech",
+        industry_color: "emerald",
+        services: ["Custom Software", "Business Intelligence"],
+        title: "Digital Payments Reconciliation System",
+        description:
+            "Designed and built an automated reconciliation engine that matches transactions " +
+            "across multiple payment channels, flagging discrepancies in real time. Replaced " +
+            "a daily manual process that took hours and was prone to error.",
+        outcome: "Processing 10,000+ transactions per day",
+    },
+    {
+        industry: "Healthcare",
+        industry_color: "sky",
+        services: ["Custom Software", "Data Engineering"],
+        title: "Patient Data Management System",
+        description:
+            "Developed a secure patient records system for a network of regional clinics, " +
+            "replacing paper-based processes with a unified digital platform. Designed for " +
+            "low-bandwidth environments and offline-first operation.",
+        outcome: "Serving 5 regional clinics",
+    },
+];
 </script>
 
 <svelte:head>
@@ -56,9 +56,9 @@
 </svelte:head>
 
 <!-- Page header -->
-<section class="py-16 lg:py-20 border-b border-dashed border-white/[0.06]">
+<section class="py-16 lg:py-20 border-b border-dashed border-border">
     <div class="max-w-[1200px] mx-auto px-5">
-        <p class="text-xs uppercase tracking-widest text-body font-500 mb-3">Our work</p>
+        <p class="text-xs uppercase tracking-widest text-caption font-500 mb-3">Our work</p>
         <h1 class="font-display font-400 text-4xl lg:text-5xl text-heading tracking-tight max-w-xl">
             Projects we're proud of<span class="text-brand">_</span>
         </h1>
@@ -77,8 +77,8 @@
             {#each case_studies as study, i}
                 <article
                     use:fade_up={i * 100}
-                    class="p-8 rounded-2xl bg-card border border-white/8
-                        transition-all duration-150 hover:-translate-y-0.5 hover:border-white/15"
+                    class="p-8 rounded-2xl bg-card border border-border
+                        transition-all duration-200 hover:bg-card-hover hover:border-brand/30"
                 >
                     <div class="flex flex-wrap items-center gap-2 mb-6">
                         <!-- Industry tag — rgba tints, no solid colours -->
@@ -111,12 +111,12 @@
                     <p class="text-body leading-relaxed mb-6 max-w-2xl">{study.description}</p>
 
                     <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between
-                        pt-5 border-t border-dashed border-white/[0.06]">
+                        pt-5 border-t border-dashed border-border">
                         <p class="flex items-center gap-2 text-sm font-medium text-emphasis">
                             <span class="w-1.5 h-1.5 rounded-full bg-brand shrink-0"></span>
                             {study.outcome}
                         </p>
-                        <p class="text-xs text-body/40 italic">Full case study coming soon</p>
+                        <p class="text-xs text-caption italic">Full case study coming soon</p>
                     </div>
                 </article>
             {/each}
@@ -125,9 +125,9 @@
 </section>
 
 <!-- CTA -->
-<section class="py-20 bg-card border-t border-dashed border-white/[0.06] text-center">
+<section class="py-20 bg-card border-t border-dashed border-border text-center">
     <div use:fade_up={0} class="max-w-[1200px] mx-auto px-5">
-        <p class="text-xs uppercase tracking-widest text-body font-500 mb-4">Next steps</p>
+        <p class="text-xs uppercase tracking-widest text-caption font-500 mb-4">Next steps</p>
         <h2 class="font-display font-400 text-3xl lg:text-[48px] leading-tight lg:leading-[52px] lg:tracking-[-0.5px] text-heading mb-4">
             Want to be our next case study<span class="text-brand">_</span>
         </h2>

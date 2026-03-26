@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { fade_up, slide_in_left } from '$lib/actions/animate';
+import { fade_up, slide_in_left } from "$lib/actions/animate";
 </script>
 
 <svelte:head>
@@ -11,9 +11,9 @@
 </svelte:head>
 
 <!-- Page header -->
-<section class="py-16 lg:py-20 border-b border-dashed border-white/[0.06]">
+<section class="py-16 lg:py-20 border-b border-dashed border-border">
     <div class="max-w-[1200px] mx-auto px-5">
-        <p class="text-xs uppercase tracking-widest text-body font-500 mb-3">What we do</p>
+        <p class="text-xs uppercase tracking-widest text-caption font-500 mb-3">What we do</p>
         <h1 class="font-display font-400 text-4xl lg:text-5xl text-heading tracking-tight max-w-xl">
             Four ways we help organisations grow<span class="text-brand">_</span>
         </h1>
@@ -27,8 +27,8 @@
         <!-- 01 -->
         <div
             use:fade_up={0}
-            class="rounded-2xl bg-card border border-white/8 overflow-hidden
-                transition-all duration-150 hover:border-white/15"
+            class="rounded-2xl bg-card border border-border overflow-hidden
+                transition-all duration-200 hover:bg-card-hover hover:border-brand/30"
         >
             <div class="p-8 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
                 <div class="lg:col-span-4 flex flex-col gap-4">
@@ -52,7 +52,7 @@
                         or a complex integration — we start from your real constraints and work backwards
                         to the <span class="text-emphasis">right solution.</span>
                     </p>
-                    <ul class="flex flex-col gap-3">
+                    <ul class="flex flex-col gap-3 mb-8">
                         {#each [
                             'Web application design and development (SvelteKit, Next.js, and similar)',
                             'REST and GraphQL API design and implementation',
@@ -66,6 +66,21 @@
                             </li>
                         {/each}
                     </ul>
+
+                    <p class="text-xs uppercase tracking-widest text-caption font-500 mb-3">Specific offerings</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {#each [
+                            { name: 'Web & Mobile Apps', desc: 'End-to-end design and delivery of customer-facing products' },
+                            { name: 'Internal Tools', desc: 'Dashboards, admin panels, and operational software' },
+                            { name: 'API & Integrations', desc: 'Connect your systems and third-party services reliably' },
+                            { name: 'Architecture & Audits', desc: 'Review, advise, and improve existing codebases' },
+                        ] as offering}
+                            <div class="bg-[#141414] border border-[#27272a] rounded-xl p-4 transition-colors duration-150 hover:border-brand/30">
+                                <p class="text-sm font-medium text-heading mb-1">{offering.name}</p>
+                                <p class="text-xs text-body">{offering.desc}</p>
+                            </div>
+                        {/each}
+                    </div>
                 </div>
             </div>
         </div>
@@ -73,8 +88,8 @@
         <!-- 02 -->
         <div
             use:fade_up={100}
-            class="rounded-2xl bg-card border border-white/8 overflow-hidden
-                transition-all duration-150 hover:border-white/15"
+            class="rounded-2xl bg-card border border-border overflow-hidden
+                transition-all duration-200 hover:bg-card-hover hover:border-brand/30"
         >
             <div class="p-8 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
                 <div class="lg:col-span-4 flex flex-col gap-4">
@@ -99,7 +114,7 @@
                         <span class="text-emphasis">real, measurable value</span>
                         in your specific context.
                     </p>
-                    <ul class="flex flex-col gap-3">
+                    <ul class="flex flex-col gap-3 mb-8">
                         {#each [
                             'AI opportunity assessment and roadmap development',
                             'Proof-of-concept design and rapid prototyping',
@@ -113,6 +128,21 @@
                             </li>
                         {/each}
                     </ul>
+
+                    <p class="text-xs uppercase tracking-widest text-caption font-500 mb-3">Specific offerings</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {#each [
+                            { name: 'AI Strategy', desc: 'Identify where AI creates real, measurable value in your business' },
+                            { name: 'LLM Applications', desc: 'Build and integrate language model-powered features' },
+                            { name: 'Predictive Systems', desc: 'Models that forecast outcomes from your existing data' },
+                            { name: 'MLOps & Monitoring', desc: 'Deploy, track, and continuously improve models in production' },
+                        ] as offering}
+                            <div class="bg-[#141414] border border-[#27272a] rounded-xl p-4 transition-colors duration-150 hover:border-brand/30">
+                                <p class="text-sm font-medium text-heading mb-1">{offering.name}</p>
+                                <p class="text-xs text-body">{offering.desc}</p>
+                            </div>
+                        {/each}
+                    </div>
                 </div>
             </div>
         </div>
@@ -120,8 +150,8 @@
         <!-- 03 -->
         <div
             use:fade_up={200}
-            class="rounded-2xl bg-card border border-white/8 overflow-hidden
-                transition-all duration-150 hover:border-white/15"
+            class="rounded-2xl bg-card border border-border overflow-hidden
+                transition-all duration-200 hover:bg-card-hover hover:border-brand/30"
         >
             <div class="p-8 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
                 <div class="lg:col-span-4 flex flex-col gap-4">
@@ -146,7 +176,7 @@
                         hours preparing data before they can analyse it,
                         <span class="text-emphasis">that's a problem we can solve.</span>
                     </p>
-                    <ul class="flex flex-col gap-3">
+                    <ul class="flex flex-col gap-3 mb-8">
                         {#each [
                             'Data pipeline design, implementation, and orchestration',
                             'Data warehouse and lakehouse architecture',
@@ -160,6 +190,21 @@
                             </li>
                         {/each}
                     </ul>
+
+                    <p class="text-xs uppercase tracking-widest text-caption font-500 mb-3">Specific offerings</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {#each [
+                            { name: 'Pipeline Development', desc: 'Automated ingestion, transformation, and delivery of data' },
+                            { name: 'Data Warehousing', desc: 'Scalable storage architectures optimised for analytical queries' },
+                            { name: 'dbt & Transformation', desc: 'Modular, tested, version-controlled SQL transformation logic' },
+                            { name: 'Observability', desc: 'Data quality monitoring, alerting, and lineage tracking' },
+                        ] as offering}
+                            <div class="bg-[#141414] border border-[#27272a] rounded-xl p-4 transition-colors duration-150 hover:border-brand/30">
+                                <p class="text-sm font-medium text-heading mb-1">{offering.name}</p>
+                                <p class="text-xs text-body">{offering.desc}</p>
+                            </div>
+                        {/each}
+                    </div>
                 </div>
             </div>
         </div>
@@ -167,8 +212,8 @@
         <!-- 04 -->
         <div
             use:fade_up={300}
-            class="rounded-2xl bg-card border border-white/8 overflow-hidden
-                transition-all duration-150 hover:border-white/15"
+            class="rounded-2xl bg-card border border-border overflow-hidden
+                transition-all duration-200 hover:bg-card-hover hover:border-brand/30"
         >
             <div class="p-8 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-16">
                 <div class="lg:col-span-4 flex flex-col gap-4">
@@ -194,7 +239,7 @@
                         vanity metrics —
                         <span class="text-emphasis">actionable insight that drives better decisions.</span>
                     </p>
-                    <ul class="flex flex-col gap-3">
+                    <ul class="flex flex-col gap-3 mb-8">
                         {#each [
                             'Executive and operational dashboard design and build',
                             'Self-service reporting infrastructure',
@@ -208,6 +253,21 @@
                             </li>
                         {/each}
                     </ul>
+
+                    <p class="text-xs uppercase tracking-widest text-caption font-500 mb-3">Specific offerings</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {#each [
+                            { name: 'Dashboard Design', desc: 'Clear, decision-focused interfaces for any audience or team' },
+                            { name: 'Self-Service BI', desc: 'Empower your team to answer their own questions with data' },
+                            { name: 'KPI Frameworks', desc: 'Define and align on the metrics that actually drive decisions' },
+                            { name: 'Embedded Analytics', desc: 'BI features built directly into your existing application' },
+                        ] as offering}
+                            <div class="bg-[#141414] border border-[#27272a] rounded-xl p-4 transition-colors duration-150 hover:border-brand/30">
+                                <p class="text-sm font-medium text-heading mb-1">{offering.name}</p>
+                                <p class="text-xs text-body">{offering.desc}</p>
+                            </div>
+                        {/each}
+                    </div>
                 </div>
             </div>
         </div>
@@ -216,9 +276,9 @@
 </section>
 
 <!-- CTA -->
-<section class="py-20 bg-card border-t border-dashed border-white/[0.06] text-center">
+<section class="py-20 bg-card border-t border-dashed border-border text-center">
     <div use:fade_up={0} class="max-w-[1200px] mx-auto px-5">
-        <p class="text-xs uppercase tracking-widest text-body font-500 mb-4">Let's talk</p>
+        <p class="text-xs uppercase tracking-widest text-caption font-500 mb-4">Let's talk</p>
         <h2 class="font-display font-400 text-3xl lg:text-[48px] leading-tight lg:leading-[52px] lg:tracking-[-0.5px] text-heading mb-4">
             Not sure which service fits<span class="text-brand">_</span>
         </h2>

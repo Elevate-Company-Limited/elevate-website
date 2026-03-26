@@ -1,28 +1,28 @@
 export function fade_up(node: Element, delay: number = 0) {
-    node.classList.add('fade-up');
+    node.classList.add("fade-up");
     const observer = new IntersectionObserver(
         ([entry]) => {
             if (entry.isIntersecting) {
-                setTimeout(() => node.classList.add('visible'), delay);
+                setTimeout(() => node.classList.add("visible"), delay);
                 observer.disconnect();
             }
         },
-        { threshold: 0.1 }
+        { threshold: 0.1 },
     );
     observer.observe(node);
     return {
         destroy() {
             observer.disconnect();
-        }
+        },
     };
 }
 
 export function count_up(
     node: HTMLElement,
-    opts: { target: number; duration?: number; suffix?: string }
+    opts: { target: number; duration?: number; suffix?: string },
 ) {
-    const { target, duration = 1500, suffix = '' } = opts;
-    node.textContent = '0' + suffix;
+    const { target, duration = 1500, suffix = "" } = opts;
+    node.textContent = "0" + suffix;
     let started = false;
 
     const observer = new IntersectionObserver(
@@ -35,7 +35,7 @@ export function count_up(
                     const elapsed = now - start_time;
                     const progress = Math.min(elapsed / duration, 1);
                     // ease-out: fast start, slow finish
-                    const eased = 1 - Math.pow(1 - progress, 2);
+                    const eased = 1 - (1 - progress) ** 2;
                     const current = Math.round(eased * target);
                     node.textContent = current.toString() + suffix;
                     if (progress < 1) {
@@ -49,31 +49,31 @@ export function count_up(
                 observer.disconnect();
             }
         },
-        { threshold: 0.5 }
+        { threshold: 0.5 },
     );
     observer.observe(node);
     return {
         destroy() {
             observer.disconnect();
-        }
+        },
     };
 }
 
 export function slide_in_left(node: Element, delay: number = 0) {
-    node.classList.add('slide-in-left');
+    node.classList.add("slide-in-left");
     const observer = new IntersectionObserver(
         ([entry]) => {
             if (entry.isIntersecting) {
-                setTimeout(() => node.classList.add('visible'), delay);
+                setTimeout(() => node.classList.add("visible"), delay);
                 observer.disconnect();
             }
         },
-        { threshold: 0.1 }
+        { threshold: 0.1 },
     );
     observer.observe(node);
     return {
         destroy() {
             observer.disconnect();
-        }
+        },
     };
 }

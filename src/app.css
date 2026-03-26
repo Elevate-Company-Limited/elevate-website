@@ -11,14 +11,22 @@
     --color-accent-tag: rgba(61, 110, 255, 0.24);
 
     /* Page surfaces */
-    --color-page: #19191c;
-    --color-card: #232325;
-    --color-pill: #2c2c30;
+    --color-page: #0a0a0a;
+    --color-card: #141414;
+    --color-card-hover: #1a1a1a;
+    --color-pill: #27272a;
 
     /* Text */
-    --color-heading: #e4e4e7;
-    --color-body: #acacaf;
-    --color-emphasis: #eeeef1;
+    --color-heading: #fafafa;
+    --color-body: #a1a1aa;
+    --color-caption: #71717a;
+    --color-emphasis: #fafafa;
+
+    /* Borders */
+    --color-border: #27272a;
+
+    /* Status */
+    --color-success: #22c55e;
 
     /* Light contrast section */
     --color-light: #ededf0;
@@ -37,7 +45,7 @@
     html {
         font-family: var(--font-sans);
         background-color: var(--color-page);
-        color: var(--color-body);
+        color: var(--color-heading);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
@@ -51,6 +59,13 @@
         font-family: var(--font-display);
         font-weight: 400;
         color: var(--color-heading);
+    }
+
+    p,
+    li,
+    span {
+        color: var(--color-body);
+        line-height: 1.7;
     }
 }
 
@@ -72,10 +87,18 @@
     animation: blur-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
-.blur-in-1 { animation-delay: 150ms; }
-.blur-in-2 { animation-delay: 300ms; }
-.blur-in-3 { animation-delay: 450ms; }
-.blur-in-4 { animation-delay: 600ms; }
+.blur-in-1 {
+    animation-delay: 150ms;
+}
+.blur-in-2 {
+    animation-delay: 300ms;
+}
+.blur-in-3 {
+    animation-delay: 450ms;
+}
+.blur-in-4 {
+    animation-delay: 600ms;
+}
 
 /* ─── Scroll-reveal ───────────────────────────────────────────────── */
 .fade-up {
@@ -117,8 +140,13 @@
 
 /* ─── Terminal cursor blink ───────────────────────────────────────── */
 @keyframes cursor-blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
 
 .cursor-blink {
@@ -127,10 +155,6 @@
 
 /* ─── Dot texture overlay ─────────────────────────────────────────── */
 .dot-texture {
-    background-image: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.04) 1px,
-        transparent 1px
-    );
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
     background-size: 24px 24px;
 }

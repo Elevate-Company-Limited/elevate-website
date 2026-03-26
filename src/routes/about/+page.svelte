@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { fade_up } from '$lib/actions/animate';
+import { fade_up } from "$lib/actions/animate";
 </script>
 
 <svelte:head>
@@ -11,9 +11,9 @@
 </svelte:head>
 
 <!-- Page header -->
-<section class="py-16 lg:py-20 border-b border-dashed border-white/[0.06]">
+<section class="py-16 lg:py-20 border-b border-dashed border-border">
     <div class="max-w-[1200px] mx-auto px-5">
-        <p class="text-xs uppercase tracking-widest text-body font-500 mb-3">Who we are</p>
+        <p class="text-xs uppercase tracking-widest text-caption font-500 mb-3">Who we are</p>
         <h1 class="font-display font-400 text-4xl lg:text-5xl text-heading tracking-tight max-w-xl">
             A technology team with a long-term view<span class="text-brand">_</span>
         </h1>
@@ -21,7 +21,7 @@
 </section>
 
 <!-- About section -->
-<section class="py-16 lg:py-24 border-b border-dashed border-white/[0.06]">
+<section class="py-16 lg:py-24 border-b border-dashed border-border">
     <div class="max-w-[1200px] mx-auto px-5">
         <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
 
@@ -50,8 +50,8 @@
 
             <!-- Info cards -->
             <div use:fade_up={100} class="flex flex-col gap-3">
-                <div class="p-6 rounded-2xl bg-card border border-white/8 transition-all duration-150 hover:border-white/15">
-                    <p class="text-xs font-500 uppercase tracking-widest text-body/60 mb-2">
+                <div class="p-6 rounded-2xl bg-card border border-border transition-all duration-200 hover:bg-card-hover hover:border-brand/30">
+                    <p class="text-xs font-500 uppercase tracking-widest text-caption mb-2">
                         Registered in Tanzania
                     </p>
                     <p class="text-sm text-body leading-relaxed">
@@ -59,8 +59,8 @@
                         Tanzania, operating at elevateco.dev.
                     </p>
                 </div>
-                <div class="p-6 rounded-2xl bg-card border border-white/8 transition-all duration-150 hover:border-white/15">
-                    <p class="text-xs font-500 uppercase tracking-widest text-body/60 mb-2">
+                <div class="p-6 rounded-2xl bg-card border border-border transition-all duration-200 hover:bg-card-hover hover:border-brand/30">
+                    <p class="text-xs font-500 uppercase tracking-widest text-caption mb-2">
                         Core services
                     </p>
                     <p class="text-sm text-body leading-relaxed">
@@ -69,8 +69,8 @@
                         partnership.
                     </p>
                 </div>
-                <div class="p-6 rounded-2xl bg-card border border-white/8 transition-all duration-150 hover:border-white/15">
-                    <p class="text-xs font-500 uppercase tracking-widest text-body/60 mb-2">Domain</p>
+                <div class="p-6 rounded-2xl bg-card border border-border transition-all duration-200 hover:bg-card-hover hover:border-brand/30">
+                    <p class="text-xs font-500 uppercase tracking-widest text-caption mb-2">Domain</p>
                     <p class="text-sm text-body">elevateco.dev</p>
                 </div>
             </div>
@@ -150,10 +150,10 @@
 </section>
 
 <!-- Team -->
-<section class="py-16 lg:py-24 border-b border-dashed border-white/[0.06]">
+<section class="py-16 lg:py-24 border-b border-dashed border-border">
     <div class="max-w-[1200px] mx-auto px-5">
         <div use:fade_up={0} class="mb-10">
-            <p class="text-xs uppercase tracking-widest text-body font-500 mb-3">The people</p>
+            <p class="text-xs uppercase tracking-widest text-caption font-500 mb-3">The people</p>
             <h2 class="font-display font-400 text-2xl lg:text-3xl text-heading">
                 The team<span class="text-brand">_</span>
             </h2>
@@ -163,11 +163,11 @@
             {#each [0, 1, 2] as i}
                 <div
                     use:fade_up={i * 100}
-                    class="p-8 rounded-2xl border border-dashed border-white/[0.06] bg-card
+                    class="p-8 rounded-2xl border border-dashed border-border bg-card
                         flex flex-col items-center justify-center gap-3 min-h-48"
                 >
                     <div class="w-12 h-12 rounded-full bg-pill"></div>
-                    <p class="text-sm text-body/60">Coming soon</p>
+                    <p class="text-sm text-caption">Coming soon</p>
                 </div>
             {/each}
         </div>
@@ -177,7 +177,7 @@
 <!-- CTA -->
 <section class="py-20 bg-page dot-texture text-center">
     <div use:fade_up={0} class="max-w-[1200px] mx-auto px-5">
-        <p class="text-xs uppercase tracking-widest text-body font-500 mb-4">Work together</p>
+        <p class="text-xs uppercase tracking-widest text-caption font-500 mb-4">Work together</p>
         <h2 class="font-display font-400 text-3xl lg:text-[48px] leading-tight lg:leading-[52px] lg:tracking-[-0.5px] text-heading mb-4">
             Ready to build something<span class="text-brand">_</span>
         </h2>

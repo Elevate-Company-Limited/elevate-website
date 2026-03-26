@@ -1,10 +1,10 @@
 <script lang="ts">
-    import "../app.css";
-    import Nav from "$lib/components/Nav.svelte";
-    import Footer from "$lib/components/Footer.svelte";
-    import type { Snippet } from "svelte";
+import "../app.css";
+import type { Snippet } from "svelte";
+import Footer from "$lib/components/Footer.svelte";
+import Nav from "$lib/components/Nav.svelte";
 
-    let { children }: { children: Snippet } = $props();
+let { children }: { children: Snippet } = $props();
 </script>
 
 <svelte:head>

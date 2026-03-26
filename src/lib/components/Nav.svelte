@@ -1,35 +1,44 @@
 <script lang="ts">
-    import { page } from "$app/state";
-    import { onMount } from "svelte";
+import { onMount } from "svelte";
+import { page } from "$app/state";
 
-    let menu_open = $state(false);
-    let scrolled = $state(false);
+let menu_open = $state(false);
+let scrolled = $state(false);
 
-    type NavLink = { href: string; label: string };
+type NavLink = { href: string; label: string };
 
-    const nav_links: NavLink[] = [
-        { href: "/services", label: "Services" },
-        { href: "/work", label: "Our Work" },
-        { href: "/about", label: "About" },
-        { href: "/contact", label: "Contact" },
-    ];
+const nav_links: NavLink[] = [
+    { href: "/services", label: "Services" },
+    { href: "/work", label: "Our Work" },
+    { href: "/about", label: "About" },
+    { href: "/careers", label: "Careers" },
+    { href: "/contact", label: "Contact" },
+];
 
-    onMount(() => {
-        const on_scroll = () => { scrolled = window.scrollY > 20; };
-        on_scroll();
-        window.addEventListener("scroll", on_scroll, { passive: true });
-        return () => window.removeEventListener("scroll", on_scroll);
-    });
+onMount(() => {
+    const on_scroll = () => {
+        scrolled = window.scrollY > 20;
+    };
+    on_scroll();
+    window.addEventListener("scroll", on_scroll, { passive: true });
+    return () => window.removeEventListener("scroll", on_scroll);
+});
 
-    function toggle_menu() { menu_open = !menu_open; }
-    function close_menu() { menu_open = false; }
-    function is_active(href: string) { return page.url.pathname === href; }
+function toggle_menu() {
+    menu_open = !menu_open;
+}
+function close_menu() {
+    menu_open = false;
+}
+function is_active(href: string) {
+    return page.url.pathname === href;
+}
 </script>
 
 <header
     class="fixed top-0 left-0 right-0 z-50 transition-all duration-300
         {scrolled
-            ? 'bg-[#19191c]/95 backdrop-blur-md border-b border-white/[0.06]'
+            ? 'bg-[#0a0a0a]/90 backdrop-blur-md border-b border-border'
             : ''}"
 >
     <nav class="max-w-[1200px] mx-auto px-5 h-16 flex items-center justify-between">
@@ -93,7 +102,7 @@
 
     <!-- Mobile menu -->
     {#if menu_open}
-        <div class="md:hidden bg-[#19191c]/98 border-t border-white/[0.06] px-5 pb-6 pt-4">
+        <div class="md:hidden bg-[#0a0a0a]/90 border-t border-border px-5 pb-6 pt-4">
             <div class="flex flex-col gap-4">
                 {#each nav_links as link}
                     <a

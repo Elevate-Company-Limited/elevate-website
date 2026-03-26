@@ -1,36 +1,36 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
-    import { fade_up, count_up } from '$lib/actions/animate';
+import { onMount } from "svelte";
+import { count_up, fade_up } from "$lib/actions/animate";
 
-    let command_text = $state('');
-    let show_line_1 = $state(false);
-    let show_line_2 = $state(false);
-    let show_line_3 = $state(false);
-    let ready_text = $state('');
-    let show_cursor = $state(false);
+let command_text = $state("");
+let show_line_1 = $state(false);
+let show_line_2 = $state(false);
+let show_line_3 = $state(false);
+let ready_text = $state("");
+let show_cursor = $state(false);
 
-    function sleep(ms: number): Promise<void> {
-        return new Promise(resolve => setTimeout(resolve, ms));
+function sleep(ms: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+onMount(async () => {
+    for (const char of " elevate status") {
+        command_text += char;
+        await sleep(40);
     }
-
-    onMount(async () => {
-        for (const char of ' elevate status') {
-            command_text += char;
-            await sleep(40);
-        }
-        await sleep(400);
-        show_line_1 = true;
-        await sleep(200);
-        show_line_2 = true;
-        await sleep(200);
-        show_line_3 = true;
-        await sleep(500);
-        for (const char of ' Ready') {
-            ready_text += char;
-            await sleep(40);
-        }
-        show_cursor = true;
-    });
+    await sleep(400);
+    show_line_1 = true;
+    await sleep(200);
+    show_line_2 = true;
+    await sleep(200);
+    show_line_3 = true;
+    await sleep(500);
+    for (const char of " Ready") {
+        ready_text += char;
+        await sleep(40);
+    }
+    show_cursor = true;
+});
 </script>
 
 <svelte:head>
@@ -46,7 +46,7 @@
 ════════════════════════════════════════════════════════════════ -->
 <section class="bg-page dot-texture">
     <!-- Announcement banner -->
-    <div class="border-b border-dashed border-white/[0.06] py-2.5 text-center text-sm">
+    <div class="border-b border-dashed border-border py-2.5 text-center text-sm">
         <span class="text-body">✦ Now serving clients across East Africa and beyond</span>
         <a href="/contact" class="text-brand font-500 ml-2">→</a>
     </div>
@@ -96,8 +96,8 @@
                     <a
                         href="/services"
                         class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg
-                            border border-white/8 text-heading text-sm font-medium
-                            transition-all duration-150 hover:border-white/20 hover:bg-card"
+                            border border-border text-heading text-sm font-medium
+                            transition-all duration-150 hover:border-brand/50"
                     >
                         See our services
                     </a>
@@ -106,7 +106,7 @@
 
             <!-- Right: 5/12 — terminal mockup -->
             <div class="lg:col-span-5 blur-in blur-in-4">
-                <div class="bg-[#1a1a1e] border border-white/10 rounded-2xl overflow-hidden">
+                <div class="bg-[#1a1a1e] border border-border rounded-2xl overflow-hidden">
                     <!-- Title bar -->
                     <div class="bg-[#232325] px-4 py-3 flex items-center">
                         <div class="flex items-center gap-1.5">
@@ -148,27 +148,27 @@
 
                         <!-- Stat mini-cards -->
                         <div class="grid grid-cols-3 gap-2">
-                            <div class="bg-[#232325] rounded-xl p-4 border border-white/[0.08]">
+                            <div class="bg-card rounded-xl p-4 border border-border">
                                 <div
                                     use:count_up={{ target: 40, suffix: '%' }}
                                     class="text-2xl font-semibold"
                                     style="color: #3d6eff"
                                 >40%</div>
-                                <div class="text-xs text-white/50 mt-1">Time saved</div>
+                                <div class="text-xs text-caption mt-1">Time saved</div>
                             </div>
-                            <div class="bg-[#232325] rounded-xl p-4 border border-white/[0.08]">
+                            <div class="bg-card rounded-xl p-4 border border-border">
                                 <div
                                     use:count_up={{ target: 10, suffix: 'k+' }}
-                                    class="text-white text-2xl font-semibold"
+                                    class="text-heading text-2xl font-semibold"
                                 >10k+</div>
-                                <div class="text-xs text-white/50 mt-1">Lines of code shipped</div>
+                                <div class="text-xs text-caption mt-1">Lines of code shipped</div>
                             </div>
-                            <div class="bg-[#232325] rounded-xl p-4 border border-white/[0.08]">
+                            <div class="bg-card rounded-xl p-4 border border-border">
                                 <div
                                     use:count_up={{ target: 5, suffix: '+' }}
-                                    class="text-white text-2xl font-semibold"
+                                    class="text-heading text-2xl font-semibold"
                                 >5+</div>
-                                <div class="text-xs text-white/50 mt-1">Industries served</div>
+                                <div class="text-xs text-caption mt-1">Industries served</div>
                             </div>
                         </div>
                     </div>
@@ -185,7 +185,7 @@
 <section class="py-20 lg:py-24 bg-page">
     <div class="max-w-[1200px] mx-auto px-5">
         <div use:fade_up={0} class="mb-12">
-            <p class="text-xs uppercase tracking-widest text-body font-500 mb-3">What we do</p>
+            <p class="text-xs uppercase tracking-widest text-caption font-500 mb-3">What we do</p>
             <h2 class="font-display font-400 text-3xl lg:text-[48px] leading-tight lg:leading-[52px] lg:tracking-[-0.5px] text-heading mb-4">
                 Four ways we create value<span class="text-brand">_</span>
             </h2>
@@ -200,8 +200,8 @@
             <!-- Custom Software -->
             <div
                 use:fade_up={0}
-                class="flex flex-col gap-4 p-6 rounded-2xl bg-card border border-white/8
-                    transition-all duration-150 hover:-translate-y-0.5 hover:border-white/15"
+                class="flex flex-col gap-4 p-6 rounded-2xl bg-card border border-border
+                    transition-all duration-200 hover:bg-card-hover hover:border-brand/30"
             >
                 <div class="w-9 h-9 rounded-lg bg-accent-tag flex items-center justify-center text-brand">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -224,8 +224,8 @@
             <!-- AI Consulting -->
             <div
                 use:fade_up={100}
-                class="flex flex-col gap-4 p-6 rounded-2xl bg-card border border-white/8
-                    transition-all duration-150 hover:-translate-y-0.5 hover:border-white/15"
+                class="flex flex-col gap-4 p-6 rounded-2xl bg-card border border-border
+                    transition-all duration-200 hover:bg-card-hover hover:border-brand/30"
             >
                 <div class="w-9 h-9 rounded-lg bg-accent-tag flex items-center justify-center text-brand">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -248,8 +248,8 @@
             <!-- Data Engineering -->
             <div
                 use:fade_up={200}
-                class="flex flex-col gap-4 p-6 rounded-2xl bg-card border border-white/8
-                    transition-all duration-150 hover:-translate-y-0.5 hover:border-white/15"
+                class="flex flex-col gap-4 p-6 rounded-2xl bg-card border border-border
+                    transition-all duration-200 hover:bg-card-hover hover:border-brand/30"
             >
                 <div class="w-9 h-9 rounded-lg bg-accent-tag flex items-center justify-center text-brand">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -273,8 +273,8 @@
             <!-- Business Intelligence -->
             <div
                 use:fade_up={300}
-                class="flex flex-col gap-4 p-6 rounded-2xl bg-card border border-white/8
-                    transition-all duration-150 hover:-translate-y-0.5 hover:border-white/15"
+                class="flex flex-col gap-4 p-6 rounded-2xl bg-card border border-border
+                    transition-all duration-200 hover:bg-card-hover hover:border-brand/30"
             >
                 <div class="w-9 h-9 rounded-lg bg-accent-tag flex items-center justify-center text-brand">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -301,24 +301,24 @@
 <!-- ═══════════════════════════════════════════════════════════════
      STATS BAR
 ════════════════════════════════════════════════════════════════ -->
-<div class="bg-card border-y border-white/8">
+<div class="bg-card border-y border-border">
     <div class="max-w-[1200px] mx-auto px-5">
         <div class="grid grid-cols-2 md:grid-cols-4">
-            <div class="px-6 py-8 text-center border-r border-dashed border-white/[0.06]">
+            <div class="px-6 py-8 text-center border-r border-dashed border-border">
                 <div
                     use:count_up={{ target: 3, suffix: '+' }}
                     class="text-2xl lg:text-3xl font-600 text-heading"
                 >3+</div>
                 <div class="text-sm text-body mt-1">Active engagements</div>
             </div>
-            <div class="px-6 py-8 text-center border-r border-dashed border-white/[0.06]">
+            <div class="px-6 py-8 text-center border-r border-dashed border-border">
                 <div
                     use:count_up={{ target: 10, suffix: 'k+' }}
                     class="text-2xl lg:text-3xl font-600 text-heading"
                 >10k+</div>
                 <div class="text-sm text-body mt-1">Daily transactions</div>
             </div>
-            <div class="px-6 py-8 text-center border-r border-dashed border-white/[0.06]">
+            <div class="px-6 py-8 text-center border-r border-dashed border-border">
                 <div
                     use:count_up={{ target: 5 }}
                     class="text-2xl lg:text-3xl font-600 text-heading"
@@ -335,6 +335,73 @@
         </div>
     </div>
 </div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HOW WE WORK — process steps
+════════════════════════════════════════════════════════════════ -->
+<section class="py-20 lg:py-24 bg-page border-t border-border">
+    <div class="max-w-[1200px] mx-auto px-5">
+        <div use:fade_up={0} class="mb-14">
+            <p class="text-xs uppercase tracking-widest text-caption font-500 mb-3">Our Process</p>
+            <h2 class="font-display font-400 text-3xl lg:text-[48px] leading-tight lg:leading-[52px] lg:tracking-[-0.5px] text-heading mb-4">
+                From conversation to delivery<span class="text-brand">_</span>
+            </h2>
+            <p class="text-body max-w-xl leading-relaxed">
+                Every engagement starts with listening.
+                <span class="text-emphasis">Here's how we work with you.</span>
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-10 lg:gap-8">
+            <!-- Step 01 -->
+            <div use:fade_up={0} class="flex flex-col gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-brand font-mono text-sm font-600 shrink-0">01</div>
+                    <div class="hidden lg:block flex-1 border-t border-dashed border-border"></div>
+                </div>
+                <h3 class="text-heading font-600">Start a Conversation</h3>
+                <p class="text-body text-sm leading-relaxed">
+                    Tell us about your business, your goals, and the problem you're trying to solve. No technical jargon required.
+                </p>
+            </div>
+
+            <!-- Step 02 -->
+            <div use:fade_up={100} class="flex flex-col gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-brand font-mono text-sm font-600 shrink-0">02</div>
+                    <div class="hidden lg:block flex-1 border-t border-dashed border-border"></div>
+                </div>
+                <h3 class="text-heading font-600">We Listen and Understand</h3>
+                <p class="text-body text-sm leading-relaxed">
+                    We dig into your workflows, your data, and your constraints before we ever write a line of code or a slide deck.
+                </p>
+            </div>
+
+            <!-- Step 03 -->
+            <div use:fade_up={200} class="flex flex-col gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-brand font-mono text-sm font-600 shrink-0">03</div>
+                    <div class="hidden lg:block flex-1 border-t border-dashed border-border"></div>
+                </div>
+                <h3 class="text-heading font-600">Build the Right Plan</h3>
+                <p class="text-body text-sm leading-relaxed">
+                    We propose a clear, scoped approach — technology choices, timeline, and team — tailored to your situation.
+                </p>
+            </div>
+
+            <!-- Step 04 -->
+            <div use:fade_up={300} class="flex flex-col gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-brand font-mono text-sm font-600 shrink-0">04</div>
+                </div>
+                <h3 class="text-heading font-600">Deliver and Grow Together</h3>
+                <p class="text-body text-sm leading-relaxed">
+                    We build, iterate, and stay accountable to outcomes. Most of our best client relationships started with a single project.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- ═══════════════════════════════════════════════════════════════
      WHY ELEVATE — light contrast section
@@ -420,7 +487,7 @@
 ════════════════════════════════════════════════════════════════ -->
 <section class="bg-page dot-texture py-20 lg:py-28 text-center">
     <div use:fade_up={0} class="max-w-[1200px] mx-auto px-5">
-        <p class="text-xs uppercase tracking-widest text-body font-500 mb-4">Get started</p>
+        <p class="text-xs uppercase tracking-widest text-caption font-500 mb-4">Get started</p>
         <h2 class="font-display font-400 text-3xl lg:text-[48px] leading-tight lg:leading-[52px] lg:tracking-[-0.5px] text-heading mb-4">
             Have a project in mind<span class="text-brand">_</span>
         </h2>
@@ -440,8 +507,8 @@
             <a
                 href="/about"
                 class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg
-                    border border-white/8 text-heading text-sm font-medium
-                    transition-all duration-150 hover:border-white/20 hover:bg-card"
+                    border border-border text-heading text-sm font-medium
+                    transition-all duration-150 hover:border-brand/50"
             >
                 About us
             </a>
