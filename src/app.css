@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+    /* Typography */
+    --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+    /* Brand */
+    --color-brand: #3d6eff;
+    --color-brand-hover: #2251f5;
+    --color-accent-tag: rgba(61, 110, 255, 0.24);
+
+    /* Page surfaces */
+    --color-page: #19191c;
+    --color-card: #232325;
+    --color-pill: #2c2c30;
+
+    /* Text */
+    --color-heading: #e4e4e7;
+    --color-body: #acacaf;
+    --color-emphasis: #eeeef1;
+
+    /* Light contrast section */
+    --color-light: #ededf0;
+    --color-light-heading: #1a1a1a;
+    --color-light-body: #4a4a4a;
+
+    /* Font weight aliases */
+    --font-weight-300: 300;
+    --font-weight-400: 400;
+    --font-weight-500: 500;
+    --font-weight-600: 600;
+    --font-weight-700: 700;
+}
+
+@layer base {
+    html {
+        font-family: var(--font-sans);
+        background-color: var(--color-page);
+        color: var(--color-body);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--font-display);
+        font-weight: 400;
+        color: var(--color-heading);
+    }
+}
+
+/* ─── Page-load animation (hero) ─────────────────────────────────── */
+@keyframes blur-in {
+    from {
+        opacity: 0;
+        filter: blur(4px);
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}
+
+.blur-in {
+    animation: blur-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.blur-in-1 { animation-delay: 150ms; }
+.blur-in-2 { animation-delay: 300ms; }
+.blur-in-3 { animation-delay: 450ms; }
+.blur-in-4 { animation-delay: 600ms; }
+
+/* ─── Scroll-reveal ───────────────────────────────────────────────── */
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ─── Dot texture overlay ─────────────────────────────────────────── */
+.dot-texture {
+    background-image: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px
+    );
+    background-size: 24px 24px;
+}

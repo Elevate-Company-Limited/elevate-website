@@ -1,0 +1,18 @@
+{
+    "extends": "./.svelte-kit/tsconfig.json",
+    "compilerOptions": {
+        // Strict type-checking
+        "strict": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUncheckedIndexedAccess": true,
+        "noImplicitOverride": true,
+        // Error on unused code
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        // Module hygiene
+        "verbatimModuleSyntax": true,
+        "skipLibCheck": true,
+        // Disabled — index signatures are used by SvelteKit internals
+        "noPropertyAccessFromIndexSignature": false
+    }
+}

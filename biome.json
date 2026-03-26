@@ -1,0 +1,13 @@
+{
+    "formatter": {
+        "indentStyle": "space",
+        "lineWidth": 100,
+        "indentWidth": 4
+    },
+    "vcs": {
+        "enabled": true,
+        "clientKind": "git",
+        "useIgnoreFile": true,
+        "defaultBranch": "main"
+    }
+}
