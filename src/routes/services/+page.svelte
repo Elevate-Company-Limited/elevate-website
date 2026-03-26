@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { fade_up } from '$lib/actions/animate';
+    import { fade_up, slide_in_left } from '$lib/actions/animate';
 </script>
 
 <svelte:head>
@@ -59,8 +59,8 @@
                             'Internal tools and operational dashboards',
                             'Third-party integrations and workflow automation',
                             'Architecture reviews and technical due diligence',
-                        ] as item}
-                            <li class="flex items-start gap-3 text-sm text-body">
+                        ] as item, i}
+                            <li use:slide_in_left={i * 80} class="flex items-start gap-3 text-sm text-body">
                                 <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand shrink-0"></span>
                                 {item}
                             </li>
@@ -106,8 +106,8 @@
                             'LLM integration and prompt engineering',
                             'Model fine-tuning and evaluation frameworks',
                             'Production deployment, monitoring, and iteration',
-                        ] as item}
-                            <li class="flex items-start gap-3 text-sm text-body">
+                        ] as item, i}
+                            <li use:slide_in_left={i * 80} class="flex items-start gap-3 text-sm text-body">
                                 <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand shrink-0"></span>
                                 {item}
                             </li>
@@ -153,8 +153,8 @@
                             'ETL/ELT development with dbt, Airbyte, and similar tooling',
                             'Data quality frameworks and observability',
                             'Cloud data infrastructure on AWS, GCP, or Azure',
-                        ] as item}
-                            <li class="flex items-start gap-3 text-sm text-body">
+                        ] as item, i}
+                            <li use:slide_in_left={i * 80} class="flex items-start gap-3 text-sm text-body">
                                 <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand shrink-0"></span>
                                 {item}
                             </li>
@@ -201,8 +201,8 @@
                             'KPI frameworks and metric definitions',
                             'BI tool implementation (Metabase, Superset, Looker, and similar)',
                             'Embedded analytics in existing applications',
-                        ] as item}
-                            <li class="flex items-start gap-3 text-sm text-body">
+                        ] as item, i}
+                            <li use:slide_in_left={i * 80} class="flex items-start gap-3 text-sm text-body">
                                 <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand shrink-0"></span>
                                 {item}
                             </li>

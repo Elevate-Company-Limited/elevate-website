@@ -91,6 +91,40 @@
     transform: translateY(0);
 }
 
+/* ─── Slide-in-left ───────────────────────────────────────────────── */
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-8px);
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+.slide-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ─── Terminal status line fade-in ────────────────────────────────── */
+.term-line {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.term-line.visible {
+    opacity: 1;
+}
+
+/* ─── Terminal cursor blink ───────────────────────────────────────── */
+@keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.cursor-blink {
+    animation: cursor-blink 1s step-end infinite;
+}
+
 /* ─── Dot texture overlay ─────────────────────────────────────────── */
 .dot-texture {
     background-image: radial-gradient(

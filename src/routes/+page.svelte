@@ -1,5 +1,36 @@
 <script lang="ts">
-    import { fade_up } from '$lib/actions/animate';
+    import { onMount } from 'svelte';
+    import { fade_up, count_up } from '$lib/actions/animate';
+
+    let command_text = $state('');
+    let show_line_1 = $state(false);
+    let show_line_2 = $state(false);
+    let show_line_3 = $state(false);
+    let ready_text = $state('');
+    let show_cursor = $state(false);
+
+    function sleep(ms: number): Promise<void> {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    onMount(async () => {
+        for (const char of ' elevate status') {
+            command_text += char;
+            await sleep(40);
+        }
+        await sleep(400);
+        show_line_1 = true;
+        await sleep(200);
+        show_line_2 = true;
+        await sleep(200);
+        show_line_3 = true;
+        await sleep(500);
+        for (const char of ' Ready') {
+            ready_text += char;
+            await sleep(40);
+        }
+        show_cursor = true;
+    });
 </script>
 
 <svelte:head>
@@ -73,55 +104,71 @@
                 </div>
             </div>
 
-            <!-- Right: 5/12 — product mockup -->
+            <!-- Right: 5/12 — terminal mockup -->
             <div class="lg:col-span-5 blur-in blur-in-4">
-                <div class="rounded-2xl bg-card border border-white/8 overflow-hidden">
-                    <!-- Window chrome -->
-                    <div class="flex items-center gap-2 px-5 py-3.5 border-b border-white/[0.06]">
-                        <div class="w-2.5 h-2.5 rounded-full bg-pill"></div>
-                        <div class="w-2.5 h-2.5 rounded-full bg-pill"></div>
-                        <div class="w-2.5 h-2.5 rounded-full bg-pill"></div>
-                        <div class="ml-3 flex-1 bg-pill rounded px-3 py-1 text-xs text-body font-mono text-center">
-                            fleet-ops · production
+                <div class="bg-[#1a1a1e] border border-white/10 rounded-2xl overflow-hidden">
+                    <!-- Title bar -->
+                    <div class="bg-[#232325] px-4 py-3 flex items-center">
+                        <div class="flex items-center gap-1.5">
+                            <div class="w-3 h-3 rounded-full bg-[#ff5f57]"></div>
+                            <div class="w-3 h-3 rounded-full bg-[#febc2e]"></div>
+                            <div class="w-3 h-3 rounded-full bg-[#28c840]"></div>
                         </div>
+                        <div class="flex-1 text-center font-mono text-xs text-white/40">elevate · production</div>
                     </div>
 
-                    <!-- Console output -->
-                    <div class="p-6">
-                        <div class="font-mono text-sm space-y-2 mb-6">
+                    <!-- Terminal body -->
+                    <div class="p-6 font-mono text-sm bg-[#1a1a1e]">
+                        <div class="space-y-2 mb-6">
+                            <!-- Typed command -->
                             <div>
-                                <span class="text-brand">$</span>
-                                <span class="text-heading ml-2">elevate status</span>
+                                <span style="color: #3d6eff">$</span>
+                                <span class="text-white/90">{command_text}</span>
                             </div>
-                            <div class="text-body pl-4">→ Pipelines:
-                                <span class="text-green-400">3 running</span>
+                            <!-- Status lines — instant reveal with fade -->
+                            <div class="term-line" class:visible={show_line_1}>
+                                <span class="text-white/40">→ Pipelines: </span>
+                                <span style="color: #22c55e">3 running</span>
                             </div>
-                            <div class="text-body pl-4">→ Dashboard:
-                                <span class="text-brand">live</span>
+                            <div class="term-line" class:visible={show_line_2}>
+                                <span class="text-white/40">→ Dashboard: </span>
+                                <span style="color: #3d6eff">live</span>
                             </div>
-                            <div class="text-body pl-4">→ Last sync:
-                                <span class="text-emphasis">2m ago</span>
+                            <div class="term-line" class:visible={show_line_3}>
+                                <span class="text-white/40">→ Last sync: </span>
+                                <span class="text-white/60">2m ago</span>
                             </div>
+                            <!-- Ready line -->
                             <div class="pt-2">
-                                <span class="text-brand">$</span>
-                                <span class="text-emphasis ml-2">Ready</span>
-                                <span class="text-brand animate-pulse">_</span>
+                                <span style="color: #3d6eff">$</span>
+                                <span class="text-white/90">{ready_text}</span>
+                                {#if show_cursor}<span class="cursor-blink" style="color: #3d6eff">_</span>{/if}
                             </div>
                         </div>
 
-                        <!-- Metric mini-cards -->
+                        <!-- Stat mini-cards -->
                         <div class="grid grid-cols-3 gap-2">
-                            <div class="bg-page rounded-xl p-3">
-                                <div class="text-brand font-600 text-xl">40%</div>
-                                <div class="text-body text-xs mt-0.5">Time saved</div>
+                            <div class="bg-[#232325] rounded-xl p-4 border border-white/[0.08]">
+                                <div
+                                    use:count_up={{ target: 40, suffix: '%' }}
+                                    class="text-2xl font-semibold"
+                                    style="color: #3d6eff"
+                                >40%</div>
+                                <div class="text-xs text-white/50 mt-1">Time saved</div>
                             </div>
-                            <div class="bg-page rounded-xl p-3">
-                                <div class="text-emphasis font-600 text-xl">10k+</div>
-                                <div class="text-body text-xs mt-0.5">Tx / day</div>
+                            <div class="bg-[#232325] rounded-xl p-4 border border-white/[0.08]">
+                                <div
+                                    use:count_up={{ target: 10, suffix: 'k+' }}
+                                    class="text-white text-2xl font-semibold"
+                                >10k+</div>
+                                <div class="text-xs text-white/50 mt-1">Lines of code shipped</div>
                             </div>
-                            <div class="bg-page rounded-xl p-3">
-                                <div class="text-emphasis font-600 text-xl">5+</div>
-                                <div class="text-body text-xs mt-0.5">Industries</div>
+                            <div class="bg-[#232325] rounded-xl p-4 border border-white/[0.08]">
+                                <div
+                                    use:count_up={{ target: 5, suffix: '+' }}
+                                    class="text-white text-2xl font-semibold"
+                                >5+</div>
+                                <div class="text-xs text-white/50 mt-1">Industries served</div>
                             </div>
                         </div>
                     </div>
@@ -258,19 +305,31 @@
     <div class="max-w-[1200px] mx-auto px-5">
         <div class="grid grid-cols-2 md:grid-cols-4">
             <div class="px-6 py-8 text-center border-r border-dashed border-white/[0.06]">
-                <div class="text-2xl lg:text-3xl font-600 text-heading">3+</div>
+                <div
+                    use:count_up={{ target: 3, suffix: '+' }}
+                    class="text-2xl lg:text-3xl font-600 text-heading"
+                >3+</div>
                 <div class="text-sm text-body mt-1">Active engagements</div>
             </div>
             <div class="px-6 py-8 text-center border-r border-dashed border-white/[0.06]">
-                <div class="text-2xl lg:text-3xl font-600 text-heading">10k+</div>
+                <div
+                    use:count_up={{ target: 10, suffix: 'k+' }}
+                    class="text-2xl lg:text-3xl font-600 text-heading"
+                >10k+</div>
                 <div class="text-sm text-body mt-1">Daily transactions</div>
             </div>
             <div class="px-6 py-8 text-center border-r border-dashed border-white/[0.06]">
-                <div class="text-2xl lg:text-3xl font-600 text-heading">5</div>
+                <div
+                    use:count_up={{ target: 5 }}
+                    class="text-2xl lg:text-3xl font-600 text-heading"
+                >5</div>
                 <div class="text-sm text-body mt-1">Clinics served</div>
             </div>
             <div class="px-6 py-8 text-center">
-                <div class="text-2xl lg:text-3xl font-600 text-heading">5+</div>
+                <div
+                    use:count_up={{ target: 5, suffix: '+' }}
+                    class="text-2xl lg:text-3xl font-600 text-heading"
+                >5+</div>
                 <div class="text-sm text-body mt-1">Industries</div>
             </div>
         </div>
