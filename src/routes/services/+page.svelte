@@ -14,8 +14,9 @@ import { fade_up, slide_in_left } from "$lib/actions/animate";
 <section class="py-16 lg:py-20 border-b border-dashed border-border">
     <div class="max-w-[1200px] mx-auto px-5">
         <p class="text-xs uppercase tracking-widest text-caption font-500 mb-3">What we do</p>
-        <h1 class="font-display font-400 text-4xl lg:text-5xl text-heading tracking-tight max-w-xl">
-            Four ways we help organisations grow<span class="text-brand">_</span>
+        <h1 class="font-display font-400 text-4xl lg:text-5xl tracking-tight max-w-xl">
+            <span class="block text-[#fafafa]">What we</span>
+            <span class="block" style="color: #3d6eff">do_</span>
         </h1>
     </div>
 </section>

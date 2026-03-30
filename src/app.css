@@ -61,6 +61,10 @@
         color: var(--color-heading);
     }
 
+    h1 { letter-spacing: -0.04em; }
+    h2 { letter-spacing: -0.03em; }
+    h3 { letter-spacing: -0.02em; }
+
     p,
     li,
     span {
@@ -157,4 +161,20 @@
 .dot-texture {
     background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
     background-size: 24px 24px;
+}
+
+/* ─── Tech marquee ────────────────────────────────────────────────── */
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+}
+
+.marquee-track:hover {
+    animation-play-state: paused;
 }

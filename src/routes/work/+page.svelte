@@ -59,8 +59,9 @@ const case_studies: CaseStudy[] = [
 <section class="py-16 lg:py-20 border-b border-dashed border-border">
     <div class="max-w-[1200px] mx-auto px-5">
         <p class="text-xs uppercase tracking-widest text-caption font-500 mb-3">Our work</p>
-        <h1 class="font-display font-400 text-4xl lg:text-5xl text-heading tracking-tight max-w-xl">
-            Projects we're proud of<span class="text-brand">_</span>
+        <h1 class="font-display font-400 text-4xl lg:text-5xl tracking-tight max-w-xl">
+            <span class="block text-[#fafafa]">Projects we're</span>
+            <span class="block" style="color: #3d6eff">proud of_</span>
         </h1>
         <p class="mt-4 text-body max-w-xl leading-relaxed">
             A selection of engagements that show

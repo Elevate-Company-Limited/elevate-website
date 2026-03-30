@@ -14,8 +14,9 @@ import { fade_up } from "$lib/actions/animate";
 <section class="py-16 lg:py-20 border-b border-dashed border-border">
     <div class="max-w-[1200px] mx-auto px-5">
         <p class="text-xs uppercase tracking-widest text-caption font-500 mb-3">Who we are</p>
-        <h1 class="font-display font-400 text-4xl lg:text-5xl text-heading tracking-tight max-w-xl">
-            A technology team with a long-term view<span class="text-brand">_</span>
+        <h1 class="font-display font-400 text-4xl lg:text-5xl tracking-tight max-w-xl">
+            <span class="block text-[#fafafa]">Who we</span>
+            <span class="block" style="color: #3d6eff">are_</span>
         </h1>
     </div>
 </section>
